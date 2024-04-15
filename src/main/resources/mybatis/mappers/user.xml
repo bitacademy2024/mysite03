@@ -3,10 +3,19 @@
 
 <mapper namespace="user">
 	<insert id="insert" parameterType="uservo">
-		insert into user values(null, #{name }, #{email }, password(#{password }), #{gender })
+		<![CDATA[
+		insert
+		  into user
+		values (null, #{name }, #{email }, password(#{password }), #{gender })
+		]]>
 	</insert>
 	
 	<select id="findByEmailAndPassword" parameterType="map" resultType="uservo">
-		select no, name from user where email=#{email } and password=password(#{password })
+		<![CDATA[
+		select no, name
+		  from user
+		 where email=#{email }
+		   and password=password(#{password })
+		]]>
 	</select>
 </mapper>
